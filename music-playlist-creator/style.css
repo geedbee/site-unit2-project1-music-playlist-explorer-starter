@@ -12,6 +12,16 @@ header {
     background-color: lightgray;
     min-height: 50px;
     border-bottom: black 1px solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav-bar-list {
+    list-style-type: none;
+    margin-right: 30px;
+    display:flex;
+    gap: 10px;
+    align-items: center;
 }
 
 footer {
@@ -128,4 +138,53 @@ h3 {
 }
 .modal-playlist-header h2{
     margin: 5px;
+}
+
+
+/* featured page */
+.featured-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#featured-playlist-image {
+    width: 500px;
+    border-radius: 30px;
+}
+
+#featured-playlist{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-songs {
+    overflow-y: auto;
+    height: 50vh;
+}
+
+.featured-song {
+    display: flex;
+    padding-bottom: 20px;
+    padding-left: 100px;
+}
+
+.featured-song-info {
+    margin: 20px;
+}
+
+.featured-song-image {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+}
+
+.featured-song-info h3 {
+    font-size: 20px;
+}
+
+.featured-song-info p {
+    font-size: 10px;
+    margin: 0;
 }

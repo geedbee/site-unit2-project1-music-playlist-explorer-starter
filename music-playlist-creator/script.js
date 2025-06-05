@@ -2,8 +2,8 @@
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 
-let playlistData;
 
+//Shuffle implementation
 document.getElementById('shuffle-button').addEventListener('click', function(event) {
    ShuffleSongs(event);
 });
@@ -27,7 +27,6 @@ function ShuffleSongs(event){
    }
 
 }
-//from stackoverflow
 function shuffle(array) {
    for (let i = array.length - 1; i > 0; i--) {
      let j = Math.floor(Math.random() * (i + 1));
@@ -38,6 +37,8 @@ function shuffle(array) {
    return array;
  }
 
+
+//Modal handling
 function openModal(playlist) {
    // Clear existing cards
    document.querySelector('.modal-playlist-cards').innerHTML = '';
@@ -73,29 +74,7 @@ window.onclick = function(event) {
    }
 }
 
-
-//handle loading of data
-async function LoadPlaylistData(){
-   const data = await FetchData();
-   console.log(data);
-   playlistData = data.playlists;
-   for (const x of data.playlists){
-     let playlist = document.createElement('div');
-     playlist.className = 'card-container';
-     document.getElementById('playlist-cards').appendChild(playlist);
-     let card = document.createElement('div');
-     card.className = 'card';
-     card.addEventListener('click', function() {
-       openModal(x);
-     });
-     playlist.appendChild(card);
-     card.innerHTML = `<img src="${x.playlist_art || 'assets/img/playlist.png'}" alt="Playlist Image" class="playlist-image">
-      <h2>${x.playlist_name}</h2>
-      <h3>${x.playlist_author}</h3>
-      <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasLiked=${false} onclick="ToggleLikes(event)">&#x2661 ${x.playlist_likes || 0}</button>`;
-   }
-}
-
+//like button handling
 function ToggleLikes(event){
    event.stopPropagation(); // Stop the event from bubbling up to parent elements
    if (event.srcElement.dataset.hasliked === "false"){
@@ -112,10 +91,24 @@ function ToggleLikes(event){
    }
 }
 
-async function FetchData(){
-   const response = await fetch("data/data.json");
-   const data = await response.json();
-   return data;
+//renders the playlists on the page
+async function RenderPlaylists(){
+   await LoadPlaylistData();
+   for (const x of playlistData){
+      let playlist = document.createElement('div');
+      playlist.className = 'card-container';
+      document.getElementById('playlist-cards').appendChild(playlist);
+      let card = document.createElement('div');
+      card.className = 'card';
+      card.addEventListener('click', function() {
+        openModal(x);
+      });
+      playlist.appendChild(card);
+      card.innerHTML = `<img src="${x.playlist_art || 'assets/img/playlist.png'}" alt="Playlist Image" class="playlist-image">
+       <h2>${x.playlist_name}</h2>
+       <h3>${x.playlist_author}</h3>
+       <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasLiked=${false} onclick="ToggleLikes(event)">&#x2661 ${x.playlist_likes || 0}</button>`;
+   }
 }
 
-LoadPlaylistData();
+RenderPlaylists();
