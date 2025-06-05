@@ -2,12 +2,10 @@
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 
-
 //Shuffle implementation
 document.getElementById('shuffle-button').addEventListener('click', function(event) {
    ShuffleSongs(event);
 });
-
 function ShuffleSongs(event){
    let playlist = playlistData.find(x => x.playlistID == document.getElementById('playlistModal').dataset.currid);
    let shuffledSongs = shuffle(playlist.songs);
@@ -17,7 +15,6 @@ function ShuffleSongs(event){
       AddSong(x);
    }
 }
-
 function shuffle(array) {
    for (let i = array.length - 1; i > 0; i--) {
      let j = Math.floor(Math.random() * (i + 1));
@@ -28,6 +25,23 @@ function shuffle(array) {
    return array;
  }
 
+//HELPER FUNCTIONS
+function GetPlaylistByID(id){
+   let playlist = playlistData.find(x => x.playlistID == id);
+   return playlist;
+}
+//Deletes a playlist from the playlistData array
+function Delete(playlistID){
+   let index = playlistData.findIndex(x => x.playlistID == playlistID);
+   playlistData.splice(index, 1);
+   ReloadPlaylists();
+}
+function ReloadPlaylists(){
+   document.getElementById('playlist-cards').innerHTML = '';
+   for (const x of playlistData){
+      AddPlaylist(x);
+   }
+}
 
 //Modal handling
 function openModal(playlist) {
@@ -51,6 +65,16 @@ function openModal(playlist) {
    modal.style.display = "block";
 }
 
+span.onclick = function() {
+   modal.style.display = "none";
+}
+window.onclick = function(event) {
+   if (event.target == modal) {
+      modal.style.display = "none";
+   }
+}
+
+//Add a song to the modal rendering
 function AddSong(x){
    let modalPlaylistCard = document.createElement('div');
    modalPlaylistCard.className = 'modal-playlist-card';
@@ -65,13 +89,39 @@ function AddSong(x){
 
 }
 
-span.onclick = function() {
-   modal.style.display = "none";
-}
-window.onclick = function(event) {
-   if (event.target == modal) {
-      modal.style.display = "none";
+//Edit button handling
+window.EditButton = function EditButton(event){
+   console.log(event.srcElement.parentElement.dataset.currid);
+   event.stopPropagation();
+   //open modal
+   document.getElementById('playlistModal').style.display = 'block';
+   document.getElementById('addSettings').classList.remove('hidden');
+   //hide shuffle button
+   document.getElementById('shuffle-button').classList.add('hidden');
+
+   //add information
+   let playlist = GetPlaylistByID(event.srcElement.parentElement.dataset.currid);
+
+   // Clear existing cards
+   document.querySelector('.modal-playlist-cards').innerHTML = '';
+
+   //header
+   document.getElementById('playlistModal').dataset.currid = String(playlist.playlistID || '');
+   document.getElementById('playlistName').textContent = playlist.playlist_name;
+   document.querySelector('.modal-playlist-header h2').textContent = playlist.playlist_author;
+   document.getElementById('playlistImage').src = playlist.playlist_art || 'assets/img/playlist.png';
+
+   //add songs
+   for (const x of playlist.songs){
+      AddSong(x);
    }
+   modal.style.display = "block";
+}
+
+//Delete button handling
+window.DeleteButton = function DeleteButton(event){
+   event.stopPropagation();
+   Delete(event.srcElement.parentElement.dataset.currid);
 }
 
 //like button handling
@@ -104,19 +154,27 @@ function AddPlaylist(x){
    document.getElementById('playlist-cards').appendChild(playlist);
    let card = document.createElement('div');
    card.className = 'card';
+   card.dataset.currid = String(x.playlistID || '');
    card.addEventListener('click', function() {
      openModal(x);
    });
    playlist.appendChild(card);
-   card.innerHTML = `<img src="${x.playlist_art || 'assets/img/playlist.png'}" alt="Playlist Image" class="playlist-image">
+   card.innerHTML = `
+   <button id="edit-btn" onclick="EditButton(event)">Edit</button>
+   <button id="del-btn" onclick="DeleteButton(event)">Delete</button>
+   <img src="${x.playlist_art || 'assets/img/playlist.png'}" alt="Playlist Image" class="playlist-image">
     <h2>${x.playlist_name}</h2>
     <h3>${x.playlist_author}</h3>
     <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasLiked=${false} onclick="ToggleLikes(event)">&#x2661 ${x.playlist_likes || 0}</button>`;
+   document.getElementById('edit-btn').addEventListener('click', function(event) {
+      openModal(x);
+      console.log("apple");
+   });
 }
 
 RenderPlaylists();
 
-//Add button handling
+//Add +  button handling
 document.getElementById('add-btn').addEventListener('click', function(event) {
    //open modal
    document.getElementById('playlistModal').style.display = 'block';
@@ -143,18 +201,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
       HandleAddSong(event);
    });
    document.getElementById("save-btn").addEventListener("click", function(event) {
+      HandleSave();
+   });
+
+});
+
+//Save button handling
+function HandleSave(event){
+   //save will handle both an edit and a new playlist
+   let id = parseInt(document.getElementById('playlistModal').dataset.currid);
+   console.log(id);
+   if (id !== undefined){
+      console.log("editing playlist");
+      let playlist = GetPlaylistByID(id);
+      let playlistName = document.getElementById('addPlaylistName').value;
+      let creatorName = document.getElementById('addPlaylistCreator').value;
+      let index = playlistData.findIndex(x => x.playlistID == id);
+      playlistData[index].playlist_name = playlistName;
+      playlistData[index].playlist_author = creatorName;
+      ReloadPlaylists();
+   }
+   else{
+      console.log("new playlist");
       let newPlaylist = {
          playlistID: playlistData.length,
-         playlist_name: document.getElementById('addPlaylistName').value,
-         playlist_author: document.getElementById('addPlaylistCreator').value,
+         playlist_name: document.getElementById('addPlaylistName').value || 'New Playlist',
+         playlist_author: document.getElementById('addPlaylistCreator').value || 'me',
          playlist_art: '',
          playlist_likes: 0,
          songs: newSongs};
       playlistData.push(newPlaylist);
       AddPlaylist(newPlaylist);
-   });
+      modal.style.display = "none";
+      }
+}
 
-});
 
 function HandleAddPlaylist(event){
    event.preventDefault(); // Prevent the default form submission behavior
