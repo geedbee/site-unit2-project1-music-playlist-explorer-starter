@@ -1,0 +1,236 @@
+{
+  "playlists": [
+    {
+      "playlistID": 0,
+      "playlist_name": "Chill Vibes",
+      "playlist_author": "Alice",
+      "playlist_art": "",
+      "songs": [
+        {
+          "title": "Die With a Smile",
+          "author": "Lady Gaga & Bruno Mars",
+          "album": "Die With a Smile",
+          "duration": "4:11",
+          "art": ""
+        },
+        {
+          "title": "Anxiety",
+          "author": "Doechii",
+          "album": "Alligator Bites Never Heal",
+          "duration": "3:30",
+          "art": ""
+        },
+        {
+          "title": "Ordinary",
+          "author": "Alex Warren",
+          "album": "Ordinary",
+          "duration": "3:15",
+          "art": ""
+        }
+      ]
+    },
+    {
+      "playlistID": 1,
+      "playlist_name": "Workout Hits",
+      "playlist_author": "Bob",
+      "playlist_art": "",
+      "songs": [
+        {
+          "title": "4x4",
+          "author": "Travis Scott",
+          "album": "Utopia",
+          "duration": "3:30",
+          "art": ""
+        },
+        {
+          "title": "Pink Pony Club",
+          "author": "Chappell Roan",
+          "album": "Pink Pony Club",
+          "duration": "3:20",
+          "art": ""
+        },
+        {
+          "title": "The Giver",
+          "author": "Chappell Roan",
+          "album": "The Giver",
+          "duration": "3:30",
+          "art": ""
+        }
+      ]
+    },
+    {
+      "playlistID": 2,
+      "playlist_name": "Throwback Classics",
+      "playlist_author": "Charlie",
+      "playlist_art": "",
+      "songs": [
+        {
+          "title": "Just in Case",
+          "author": "Morgan Wallen",
+          "album": "One Thing at a Time",
+          "duration": "3:50",
+          "art": ""
+        },
+        {
+          "title": "Die With a Smile",
+          "author": "Lady Gaga & Bruno Mars",
+          "album": "Die With a Smile",
+          "duration": "4:11",
+          "art": ""
+        },
+        {
+          "title": "Anxiety",
+          "author": "Doechii",
+          "album": "Alligator Bites Never Heal",
+          "duration": "3:30",
+          "art": ""
+        }
+      ]
+    },
+    {
+      "playlistID": 3,
+      "playlist_name": "Indie Essentials",
+      "playlist_author": "Diana",
+      "playlist_art": "",
+      "songs": [
+        {
+          "title": "Pink Pony Club",
+          "author": "Chappell Roan",
+          "album": "Pink Pony Club",
+          "duration": "3:20",
+          "art": ""
+        },
+        {
+          "title": "The Giver",
+          "author": "Chappell Roan",
+          "album": "The Giver",
+          "duration": "3:30",
+          "art": ""
+        },
+        {
+          "title": "Anxiety",
+          "author": "Doechii",
+          "album": "Alligator Bites Never Heal",
+          "duration": "3:30",
+          "art": ""
+        }
+      ]
+    },
+    {
+      "playlistID": 4,
+      "playlist_name": "Jazz Lounge",
+      "playlist_author": "Eli",
+      "playlist_art": "",
+      "songs": [
+        {
+          "title": "Ordinary",
+          "author": "Alex Warren",
+          "album": "Ordinary",
+          "duration": "3:15",
+          "art": ""
+        },
+        {
+          "title": "I'm the Problem",
+          "author": "Morgan Wallen",
+          "album": "One Thing at a Time",
+          "duration": "3:35",
+          "art": ""
+        },
+        {
+          "title": "Just in Case",
+          "author": "Morgan Wallen",
+          "album": "One Thing at a Time",
+          "duration": "3:50",
+          "art": ""
+        }
+      ]
+    },
+    {
+      "playlistID": 5,
+      "playlist_name": "Party Starters",
+      "playlist_author": "Faye",
+      "playlist_art": "",
+      "songs": [
+        {
+          "title": "4x4",
+          "author": "Travis Scott",
+          "album": "Utopia",
+          "duration": "3:30",
+          "art": ""
+        },
+        {
+          "title": "Pink Pony Club",
+          "author": "Chappell Roan",
+          "album": "Pink Pony Club",
+          "duration": "3:20",
+          "art": ""
+        },
+        {
+          "title": "The Giver",
+          "author": "Chappell Roan",
+          "album": "The Giver",
+          "duration": "3:30",
+          "art": ""
+        }
+      ]
+    },
+    {
+      "playlistID": 6,
+      "playlist_name": "Late Night Drive",
+      "playlist_author": "Gabe",
+      "playlist_art": "",
+      "songs": [
+        {
+          "title": "Anxiety",
+          "author": "Doechii",
+          "album": "Alligator Bites Never Heal",
+          "duration": "3:30",
+          "art": ""
+        },
+        {
+          "title": "Ordinary",
+          "author": "Alex Warren",
+          "album": "Ordinary",
+          "duration": "3:15",
+          "art": ""
+        },
+        {
+          "title": "I'm the Problem",
+          "author": "Morgan Wallen",
+          "album": "One Thing at a Time",
+          "duration": "3:35",
+          "art": ""
+        }
+      ]
+    },
+    {
+      "playlistID": 7,
+      "playlist_name": "Focus Mode",
+      "playlist_author": "Hannah",
+      "playlist_art": "",
+      "songs": [
+        {
+          "title": "Die With a Smile",
+          "author": "Lady Gaga & Bruno Mars",
+          "album": "Die With a Smile",
+          "duration": "4:11",
+          "art": ""
+        },
+        {
+          "title": "Anxiety",
+          "author": "Doechii",
+          "album": "Alligator Bites Never Heal",
+          "duration": "3:30",
+          "art": ""
+        },
+        {
+          "title": "Ordinary",
+          "author": "Alex Warren",
+          "album": "Ordinary",
+          "duration": "3:15",
+          "art": ""
+        }
+      ]
+    }
+  ]
+}

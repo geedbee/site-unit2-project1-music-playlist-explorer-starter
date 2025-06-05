@@ -42,6 +42,12 @@ function ReloadPlaylists(){
       AddPlaylist(x);
    }
 }
+function RenderPassedPlaylists(playlists){
+   document.getElementById('playlist-cards').innerHTML = '';
+   for (const x of playlists){
+      AddPlaylist(x);
+   }
+}
 
 //Modal handling
 function openModal(playlist) {
@@ -256,6 +262,34 @@ function HandleAddSong(event){
       duration: document.getElementById('addSongDuration').value,
       art: '',
    }
-   AddSong(newSong);
+   AddSong(newsong)
    newSongs.push(newSong);
+}
+
+//TODO: submit and save
+//TODO: clear inputs
+//TODO: use featured for search
+//TODO: bug where first playlist is not editable
+
+//Search helpers
+function DisplayResults(event){
+   console.log(event.target.value);
+   let matchingPlaylists = FindAllPlaylists(event.target.value);
+   RenderPassedPlaylists(matchingPlaylists);
+}
+
+//given search input, finds all playlists that match
+function FindAllPlaylists(searchInput){
+   //playlist name
+   return matchingPlaylists = playlistData.filter(x => x.playlist_name.toLowerCase().includes(searchInput.toLowerCase()) || x.playlist_author.toLowerCase().includes(searchInput.toLowerCase()));
+}
+
+function Search(event){
+   event.preventDefault();
+}
+
+function Clear(event){
+   event.preventDefault();
+   event.srcElement.parentElement.firstElementChild.value = '';
+   ReloadPlaylists();
 }
