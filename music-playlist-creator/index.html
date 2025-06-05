@@ -24,7 +24,7 @@
             <div class="modal-playlist-header">
                 <span class="close">&times;</span>
                 <h1 id="playlistName">Playlist Title</h1>
-                <h2>Creator Name</h2>
+                <h2 id="playlistCreator">Creator Name</h2>
                 <img id="playlistImage" src="" alt="Playlist Image">
             </div>
             <div class="modal-playlist-cards">
@@ -32,7 +32,29 @@
             <p id="playlistDates"></p>
             <p id="playlistLocation"></p>
             <div id="artistLineup"></div>
+            <div id="addSettings">
+                <form id="addPlaylistForm">
+                    <label for="addPlaylistName">Playlist Name:</label>
+                    <input id="addPlaylistName" type="text" name="playlistName" required>
+                    <label for="addPlaylistCreator">Playlist Creator:</label>
+                    <input type="text" id="addPlaylistCreator" name="playlistCreator" required>
+                    <input type="submit" value="Submit">
+                </form>
+                <form id="addSongForm">
+                    <label for="addSongName">Song Name:</label>
+                    <input id="addSongName" type="text" name="songName" required>
+                    <label for="addSongArtist">Song Artist:</label>
+                    <input type="text" id="addSongArtist" name="songArtist" required>
+                    <label for="addSongAlbum">Song Album:</label>
+                    <input type="text" id="addSongAlbum" name="songAlbum" required>
+                    <label for="addSongDuration">Song Duration:</label>
+                    <input type="text" id="addSongDuration" name="songDuration" required>
+                    <input type="submit" value="Submit">
+                </form>
+                <button id="save-btn">Save</button>
+            </div>
         </div>
+
     </div>
     <main>
         <!-- Your main content here -->
@@ -42,6 +64,7 @@
 
     <footer>
         <!-- Your footer content here -->
+         <button id="add-btn">+</button>
     </footer>
     <script src="data.js"></script>
     <script src="script.js"></script>
