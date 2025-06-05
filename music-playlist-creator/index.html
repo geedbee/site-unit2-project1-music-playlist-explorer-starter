@@ -14,27 +14,16 @@
         <!-- Your header content here -->
          <h1>Music Playlist Explorer</h1>
     </header>
-    <div onclick="openModal({name: 'Summer Beats Festival', imageUrl: 'path/to/festival.jpg', dates: 'July 15-17', location: 'Downtown Park', lineup: ['Artist A', 'Artist B']})">
-        Click here for festival details!
-    </div>
-    <div id="playlistModal" class="modal">
+    <div id="playlistModal" data-currid="none" class="modal">
         <div class="modal-content">
+            <button id="shuffle-button">Shuffle</button>
             <div class="modal-playlist-header">
                 <span class="close">&times;</span>
                 <h1 id="playlistName">Playlist Title</h1>
                 <h2>Creator Name</h2>
-                <img id="playlistImage" src="" alt="Festival Image">
+                <img id="playlistImage" src="" alt="Playlist Image">
             </div>
             <div class="modal-playlist-cards">
-                <div class="modal-playlist-card">
-                    <img class="modal-playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <div class="modal-playlist-info">
-                        <h3>Song Title</h3>
-                        <p>Artist Test</p>
-                        <p>Album Name</p>
-                    </div>
-                    <p>0:00</p>
-                </div>
             </div>
             <p id="playlistDates"></p>
             <p id="playlistLocation"></p>
@@ -44,101 +33,12 @@
     <main>
         <!-- Your main content here -->
          <div id="playlist-cards">
-            <div class="card-container">
-                <div class="card">
-                    <img class="playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <h2>Playlist Title</h2>
-                    <h3>Creator name</h3>
-                    <div class="like-container">
-                    <img class="like-image" src="assets/img/like.png" alt="Like Button">
-                    <p>5</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img class="playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <h2>Playlist Title</h2>
-                    <h3>Creator name</h3>
-                    <div class="like-container">
-                    <img class="like-image" src="assets/img/like.png" alt="Like Button">
-                    <p>5</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img class="playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <h2>Playlist Title</h2>
-                    <h3>Creator name</h3>
-                    <div class="like-container">
-                    <img class="like-image" src="assets/img/like.png" alt="Like Button">
-                    <p>5</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img class="playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <h2>Playlist Title</h2>
-                    <h3>Creator name</h3>
-                    <div class="like-container">
-                    <img class="like-image" src="assets/img/like.png" alt="Like Button">
-                    <p>5</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img class="playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <h2>Playlist Title</h2>
-                    <h3>Creator name</h3>
-                    <div class="like-container">
-                    <img class="like-image" src="assets/img/like.png" alt="Like Button">
-                    <p>5</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img class="playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <h2>Playlist Title</h2>
-                    <h3>Creator name</h3>
-                    <div class="like-container">
-                    <img class="like-image" src="assets/img/like.png" alt="Like Button">
-                    <p>5</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img class="playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <h2>Playlist Title</h2>
-                    <h3>Creator name</h3>
-                    <div class="like-container">
-                    <img class="like-image" src="assets/img/like.png" alt="Like Button">
-                    <p>5</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img class="playlist-image" src="assets/img/playlist.png" alt="Playlist Cover Image">
-                    <h2>Playlist Title</h2>
-                    <h3>Creator name</h3>
-                    <div class="like-container">
-                    <img class="like-image" src="assets/img/like.png" alt="Like Button">
-                    <p>5</p>
-                </div>
-                </div>
-            </div>
          </div>
     </main>
 
     <footer>
         <!-- Your footer content here -->
     </footer>
-    <script src="data/data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

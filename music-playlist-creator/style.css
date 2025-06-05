@@ -64,6 +64,11 @@ h1 {
     margin: 20px;
 }
 
+.card:hover {
+    border: 2px solid blue;
+    box-shadow: 5px 5px 5px gray;
+}
+
 h2 {
     font-size: 15px;
     margin: 0;
@@ -86,6 +91,7 @@ h3 {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    transition: display .5s;
  }
  .modal-content {
     background-color: #fefefe;
@@ -108,7 +114,8 @@ h3 {
  }
 
 .modal-playlist-card{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     justify-content: space-between;
 }
@@ -116,3 +123,9 @@ h3 {
     width: 30px;
 }
 
+#playlistImage {
+    width: 50px;
+}
+.modal-playlist-header h2{
+    margin: 5px;
+}
