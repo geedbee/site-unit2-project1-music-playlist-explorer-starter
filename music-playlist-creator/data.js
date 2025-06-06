@@ -11,4 +11,3 @@ async function FetchData(){
    const data = await response.json();
    return data;
 }
-

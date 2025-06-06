@@ -32,6 +32,7 @@ function GetPlaylistByID(id){
 }
 //Deletes a playlist from the playlistData array
 function Delete(playlistID){
+   console.log("deleting playlist" + playlistID);
    let index = playlistData.findIndex(x => x.playlistID == playlistID);
    playlistData.splice(index, 1);
    ReloadPlaylists();
@@ -59,7 +60,8 @@ function openModal(playlist) {
    //header
    document.getElementById('playlistModal').dataset.currid = String(playlist.playlistID || '');
    document.getElementById('playlistName').textContent = playlist.playlist_name;
-   document.querySelector('.modal-playlist-header h2').textContent = playlist.playlist_author;
+   console.log(document.getElementById('playlistCreator'));
+   document.getElementById('playlistCreator').textContent = playlist.playlist_author;
    document.getElementById('playlistImage').src = playlist.playlist_art || 'assets/img/playlist.png';
 
    //check visibility
@@ -106,7 +108,7 @@ window.EditButton = function EditButton(event){
    document.getElementById('shuffle-button').classList.add('hidden');
 
    //add information
-   let playlist = GetPlaylistByID(event.srcElement.parentElement.dataset.currid);
+   let playlist = GetPlaylistByID(event.srcElement.parentElement.parentElement.dataset.currid);
 
    // Clear existing cards
    document.querySelector('.modal-playlist-cards').innerHTML = '';
@@ -114,7 +116,7 @@ window.EditButton = function EditButton(event){
    //header
    document.getElementById('playlistModal').dataset.currid = String(playlist.playlistID || '');
    document.getElementById('playlistName').textContent = playlist.playlist_name;
-   document.querySelector('.modal-playlist-header h2').textContent = playlist.playlist_author;
+   document.getElementById('playlistCreator').textContent = playlist.playlist_author;
    document.getElementById('playlistImage').src = playlist.playlist_art || 'assets/img/playlist.png';
    document.getElementById('addPlaylistName').value = playlist.playlist_name;
    document.getElementById('addPlaylistCreator').value = playlist.playlist_author;
@@ -150,7 +152,7 @@ document.getElementById('add-btn').addEventListener('click', function(event) {
 //Delete button handling
 window.DeleteButton = function DeleteButton(event){
    event.stopPropagation();
-   Delete(event.srcElement.parentElement.dataset.currid);
+   Delete(event.srcElement.parentElement.parentElement.dataset.currid);
 }
 
 //like button handling
@@ -189,8 +191,10 @@ function AddPlaylist(x){
    });
    playlist.appendChild(card);
    card.innerHTML = `
-   <button id="edit-btn" onclick="EditButton(event)">Edit</button>
-   <button id="del-btn" onclick="DeleteButton(event)">Delete</button>
+   <div class="edit-del-container">
+      <button id="edit-btn" onclick="EditButton(event)">Edit</button>
+      <button id="del-btn" onclick="DeleteButton(event)">Delete</button>
+   </div>
    <img src="${x.playlist_art || 'assets/img/playlist.png'}" alt="Playlist Image" class="playlist-image">
     <h2>${x.playlist_name}</h2>
     <h3>${x.playlist_author}</h3>
@@ -236,8 +240,8 @@ function HandleSave(event){
       console.log("new playlist");
       let newPlaylist = {
          playlistID: playlistData.length,
-         playlist_name: document.getElementById('addPlaylistName').textContent || 'New Playlist',
-         playlist_author: document.getElementById('addPlaylistCreator').textContent || 'me',
+         playlist_name: document.getElementById('addPlaylistName').value || 'New Playlist',
+         playlist_author: document.getElementById('addPlaylistCreator').value || 'me',
          playlist_art: '',
          playlist_likes: 0,
          songs: newSongs};
@@ -315,6 +319,10 @@ function Sort(event){
 
 function SortByName(){
    RenderPassedPlaylists(playlistData.sort((a, b) => a.playlist_name.localeCompare(b.playlist_name)));
+}
+
+function SortByLikes() {
+   RenderPassedPlaylists(playlistData.sort((a, b) => b.playlist_likes - a.playlist_likes));
 }
 
 //event handlers for add playlist modal

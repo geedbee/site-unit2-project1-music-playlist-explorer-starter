@@ -4,28 +4,29 @@
       "playlistID": 12,
       "playlist_name": "Chill Vibes",
       "playlist_author": "Alice",
-      "playlist_art": "",
+      "playlist_art": "assets/img/pic8.jpg",
+      "playlist_likes": 742,
       "songs": [
         {
           "title": "Die With a Smile",
           "author": "Lady Gaga & Bruno Mars",
           "album": "Die With a Smile",
           "duration": "4:11",
-          "art": ""
+          "art": "https://picsum.photos/50?random=101"
         },
         {
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=102"
         },
         {
           "title": "Ordinary",
           "author": "Alex Warren",
           "album": "Ordinary",
           "duration": "3:15",
-          "art": ""
+          "art": "https://picsum.photos/50?random=103"
         }
       ]
     },
@@ -33,28 +34,29 @@
       "playlistID": 1,
       "playlist_name": "Workout Hits",
       "playlist_author": "Bob",
-      "playlist_art": "",
+      "playlist_art": "assets/img/pic1.jpg",
+      "playlist_likes": 583,
       "songs": [
         {
           "title": "4x4",
           "author": "Travis Scott",
           "album": "Utopia",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=104"
         },
         {
           "title": "Pink Pony Club",
           "author": "Chappell Roan",
           "album": "Pink Pony Club",
           "duration": "3:20",
-          "art": ""
+          "art": "https://picsum.photos/50?random=105"
         },
         {
           "title": "The Giver",
           "author": "Chappell Roan",
           "album": "The Giver",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=106"
         }
       ]
     },
@@ -62,28 +64,29 @@
       "playlistID": 2,
       "playlist_name": "Throwback Classics",
       "playlist_author": "Charlie",
-      "playlist_art": "",
+      "playlist_art": "assets/img/pic2.jpg",
+      "playlist_likes": 926,
       "songs": [
         {
           "title": "Just in Case",
           "author": "Morgan Wallen",
           "album": "One Thing at a Time",
           "duration": "3:50",
-          "art": ""
+          "art": "https://picsum.photos/50?random=107"
         },
         {
           "title": "Die With a Smile",
           "author": "Lady Gaga & Bruno Mars",
           "album": "Die With a Smile",
           "duration": "4:11",
-          "art": ""
+          "art": "https://picsum.photos/50?random=108"
         },
         {
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=109"
         }
       ]
     },
@@ -91,28 +94,29 @@
       "playlistID": 3,
       "playlist_name": "Indie Essentials",
       "playlist_author": "Diana",
-      "playlist_art": "",
+      "playlist_art": "assets/img/pic3.jpg",
+      "playlist_likes": 487,
       "songs": [
         {
           "title": "Pink Pony Club",
           "author": "Chappell Roan",
           "album": "Pink Pony Club",
           "duration": "3:20",
-          "art": ""
+          "art": "https://picsum.photos/50?random=110"
         },
         {
           "title": "The Giver",
           "author": "Chappell Roan",
           "album": "The Giver",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=111"
         },
         {
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=112"
         }
       ]
     },
@@ -120,28 +124,29 @@
       "playlistID": 4,
       "playlist_name": "Jazz Lounge",
       "playlist_author": "Eli",
-      "playlist_art": "",
+      "playlist_art": "assets/img/pic4.jpg",
+      "playlist_likes": 314,
       "songs": [
         {
           "title": "Ordinary",
           "author": "Alex Warren",
           "album": "Ordinary",
           "duration": "3:15",
-          "art": ""
+          "art": "https://picsum.photos/50?random=113"
         },
         {
           "title": "I'm the Problem",
           "author": "Morgan Wallen",
           "album": "One Thing at a Time",
           "duration": "3:35",
-          "art": ""
+          "art": "https://picsum.photos/50?random=114"
         },
         {
           "title": "Just in Case",
           "author": "Morgan Wallen",
           "album": "One Thing at a Time",
           "duration": "3:50",
-          "art": ""
+          "art": "https://picsum.photos/50?random=115"
         }
       ]
     },
@@ -149,28 +154,29 @@
       "playlistID": 5,
       "playlist_name": "Party Starters",
       "playlist_author": "Faye",
-      "playlist_art": "",
+      "playlist_art": "assets/img/pic5.jpg",
+      "playlist_likes": 698,
       "songs": [
         {
           "title": "4x4",
           "author": "Travis Scott",
           "album": "Utopia",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=116"
         },
         {
           "title": "Pink Pony Club",
           "author": "Chappell Roan",
           "album": "Pink Pony Club",
           "duration": "3:20",
-          "art": ""
+          "art": "https://picsum.photos/50?random=117"
         },
         {
           "title": "The Giver",
           "author": "Chappell Roan",
           "album": "The Giver",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=118"
         }
       ]
     },
@@ -178,28 +184,29 @@
       "playlistID": 6,
       "playlist_name": "Late Night Drive",
       "playlist_author": "Gabe",
-      "playlist_art": "",
+      "playlist_art": "assets/img/pic6.jpg",
+      "playlist_likes": 812,
       "songs": [
         {
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=119"
         },
         {
           "title": "Ordinary",
           "author": "Alex Warren",
           "album": "Ordinary",
           "duration": "3:15",
-          "art": ""
+          "art": "https://picsum.photos/50?random=120"
         },
         {
           "title": "I'm the Problem",
           "author": "Morgan Wallen",
           "album": "One Thing at a Time",
           "duration": "3:35",
-          "art": ""
+          "art": "https://picsum.photos/50?random=121"
         }
       ]
     },
@@ -207,28 +214,29 @@
       "playlistID": 7,
       "playlist_name": "Focus Mode",
       "playlist_author": "Hannah",
-      "playlist_art": "",
+      "playlist_art": "assets/img/pic7.jpg",
+      "playlist_likes": 429,
       "songs": [
         {
           "title": "Die With a Smile",
           "author": "Lady Gaga & Bruno Mars",
           "album": "Die With a Smile",
           "duration": "4:11",
-          "art": ""
+          "art": "https://picsum.photos/50?random=122"
         },
         {
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
           "duration": "3:30",
-          "art": ""
+          "art": "https://picsum.photos/50?random=123"
         },
         {
           "title": "Ordinary",
           "author": "Alex Warren",
           "album": "Ordinary",
           "duration": "3:15",
-          "art": ""
+          "art": "https://picsum.photos/50?random=124"
         }
       ]
     }
