@@ -270,6 +270,7 @@ function HandleAddSong(event){
 //TODO: clear inputs
 //TODO: use featured for search
 //TODO: bug where first playlist is not editable
+//TODO: add support for likes. add support for dates.
 
 //Search helpers
 function DisplayResults(event){
@@ -292,4 +293,24 @@ function Clear(event){
    event.preventDefault();
    event.srcElement.parentElement.firstElementChild.value = '';
    ReloadPlaylists();
+}
+
+//Sorting
+function Sort(event){
+   console.log(event.target.value);
+   switch (event.target.value){
+      case 'name':
+         SortByName();
+         break;
+      case 'likes':
+         SortByLikes();
+         break;
+      case 'none':
+         ReloadPlaylists();
+         break;
+   }
+}
+
+function SortByName(){
+   RenderPassedPlaylists(playlistData.sort((a, b) => a.playlist_name.localeCompare(b.playlist_name)));
 }
