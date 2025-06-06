@@ -12,7 +12,7 @@
 <body>
     <header>
         <!-- Your header content here -->
-         <h1>Music Playlist Explorer</h1>
+         <h1><a href="index.html" >Music Playlist Explorer </a></h1>
          <div id="search-bar">
             <form>
                <input type="text" id="search" placeholder="Search for a playlist..." onkeyup="DisplayResults(event)">
@@ -62,7 +62,7 @@
                     <label for="addSongAlbum">Song Album:</label>
                     <input type="text" id="addSongAlbum" name="songAlbum" required>
                     <label for="addSongDuration">Song Duration:</label>
-                    <input type="text" id="addSongDuration" name="songDuration" required>
+                    <input type="text" pattern="\d+:\d+" id="addSongDuration" name="songDuration" required>
                     <input type="submit" value="Add">
                 </form>
                 <button id="save-btn">Save Playlist</button>
@@ -79,7 +79,7 @@
     <footer>
         <!-- Your footer content here -->
     </footer>
-    <button id="add-btn">+</button>
+    <button id="add-btn"><i class="fa-solid fa-plus"></i></button>
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>

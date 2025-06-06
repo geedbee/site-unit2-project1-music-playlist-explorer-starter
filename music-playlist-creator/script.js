@@ -106,14 +106,15 @@ window.EditButton = function EditButton(event){
    document.getElementById('shuffle-button').classList.add('hidden');
 
    //add information
-   let playlist = GetPlaylistByID(event.srcElement.parentElement.parentElement.dataset.currid);
+   let playlist = GetPlaylistByID(parseInt(event.srcElement.parentElement.parentElement.parentElement.dataset.currid));
+
 
    // Clear existing cards
    document.querySelector('.modal-playlist-cards').innerHTML = '';
 
    //header
-   document.getElementById('playlistModal').dataset.currid = String(playlist.playlistID || '');
    console.log(document.getElementById('playlistModal').dataset.currid);
+   document.getElementById('playlistModal').dataset.currid = String(playlist.playlistID || '');
    document.getElementById('playlistName').textContent = playlist.playlist_name;
    document.getElementById('playlistCreator').textContent = playlist.playlist_author;
    document.getElementById('playlistImage').src = playlist.playlist_art || 'assets/img/playlist.png';
@@ -152,7 +153,7 @@ document.getElementById('add-btn').addEventListener('click', function(event) {
 //Delete button handling
 window.DeleteButton = function DeleteButton(event){
    event.stopPropagation();
-   Delete(event.srcElement.parentElement.parentElement.dataset.currid);
+   Delete(event.srcElement.parentElement.parentElement.parentElement.dataset.currid);
 }
 
 //like button handling

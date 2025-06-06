@@ -5,9 +5,8 @@ body {
     background-color: #f8f8f8;
     min-height: 100vh;
     display:grid;
-    grid-template-rows: auto 1fr auto;
+grid-template-rows: auto 1fr auto;
 }
-
 
 header {
     background-color: lightgray;
@@ -32,9 +31,11 @@ footer {
     min-height: 50px;
 }
 
-h1 {
+h1 a{
     margin: 0;
     padding: 20px;
+    text-decoration: none;
+    color: black;
 }
 
 #playlist-cards {
@@ -254,6 +255,10 @@ h3 {
     height: 50px;
     border-radius: 50%;
     background-color: transparent;
+}
+
+#add-btn:hover {
+    background-color: lightgray;
 }
 
 #shuffle-button {
