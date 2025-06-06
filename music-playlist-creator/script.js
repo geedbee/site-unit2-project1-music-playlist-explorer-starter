@@ -50,6 +50,19 @@ function RenderPassedPlaylists(playlists){
       AddPlaylist(x);
    }
 }
+//sorting functions
+function SortByName(){
+   RenderPassedPlaylists(playlistData.sort((a, b) => a.playlist_name.localeCompare(b.playlist_name)));
+}
+
+function SortByLikes() {
+   RenderPassedPlaylists(playlistData.sort((a, b) => b.playlist_likes - a.playlist_likes));
+}
+
+function SortByDates() {
+   RenderPassedPlaylists(playlistData.sort((a, b) => b.playlist_dateadded - a.playlist_dateadded));
+}
+
 
 //Modal handling
 function openModal(playlist) {
@@ -99,6 +112,10 @@ function AddSong(x){
 
 //Edit button handling
 window.EditButton = function EditButton(event){
+   let targetElement = event.srcElement;
+   if (!event.srcElement.id !== 'edit-btn'){
+      targetElement = event.srcElement.parentElement;
+   }
    event.stopPropagation();
    //open modal
    document.getElementById('playlistModal').style.display = 'block';
@@ -106,7 +123,7 @@ window.EditButton = function EditButton(event){
    document.getElementById('shuffle-button').classList.add('hidden');
 
    //add information
-   let playlist = GetPlaylistByID(parseInt(event.srcElement.parentElement.parentElement.parentElement.dataset.currid));
+   let playlist = GetPlaylistByID(parseInt(targetElement.parentElement.parentElement.dataset.currid));
 
 
    // Clear existing cards
@@ -153,23 +170,31 @@ document.getElementById('add-btn').addEventListener('click', function(event) {
 //Delete button handling
 window.DeleteButton = function DeleteButton(event){
    event.stopPropagation();
-   Delete(event.srcElement.parentElement.parentElement.parentElement.dataset.currid);
+   if (!event.srcElement.id !== 'del-btn'){
+      targetElement = event.srcElement.parentElement;
+   }
+   Delete(targetElement.parentElement.parentElement.dataset.currid);
 }
 
 //like button handling
 function ToggleLikes(event){
+   console.log(event.srcElement);
+   let targetElement = event.srcElement;
+   if (!event.srcElement.classList.contains("like-button")){
+      targetElement = event.srcElement.parentElement;
+   }
    event.stopPropagation(); // Stop the event from bubbling up to parent elements
-   if (event.srcElement.dataset.hasliked === "false"){
-      let likes = parseInt(event.srcElement.dataset.likes) + 1;
-      event.srcElement.dataset.likes = likes;
-      event.srcElement.innerHTML = `<i class="fa-solid fa-heart"></i> ${likes}`;
-      event.srcElement.dataset.hasliked = "true";
+   if (targetElement.dataset.hasliked === "false"){
+      let likes = parseInt(targetElement.dataset.likes) + 1;
+      targetElement.dataset.likes = likes;
+      targetElement.innerHTML = `<i class="fa-solid fa-heart"></i> ${likes}`;
+      targetElement.dataset.hasliked = "true";
    }
    else {
-      let likes = parseInt(event.srcElement.dataset.likes) - 1;
-      event.srcElement.dataset.likes = likes;
-      event.srcElement.innerHTML = `<i class="fa-regular fa-heart"></i> ${likes}`;
-      event.srcElement.dataset.hasliked = "false";
+      let likes = parseInt(targetElement.dataset.likes) - 1;
+      targetElement.dataset.likes = likes;
+      targetElement.innerHTML = `<i class="fa-regular fa-heart"></i> ${likes}`;
+      targetElement.dataset.hasliked = "false";
    }
 }
 
@@ -199,7 +224,9 @@ function AddPlaylist(x){
    <img src="${x.playlist_art || 'assets/img/playlist.png'}" alt="Playlist Image" class="playlist-image">
     <h2>${x.playlist_name}</h2>
     <h3>${x.playlist_author}</h3>
-    <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasliked=${false} onclick="ToggleLikes(event)"><i class="fa-regular fa-heart"></i> ${x.playlist_likes || 0}</button>`;
+    <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasliked=${false} onclick="ToggleLikes(event)">
+      <i class="fa-regular fa-heart"></i> ${x.playlist_likes || 0}
+    </button>`;
 }
 
 RenderPlaylists();
@@ -273,9 +300,6 @@ function HandleAddSong(event){
    newSongs.push(newSong);
 }
 
-//TODO: add support for likes. add support for dates.
-//TODO: make sure songs can be edited
-
 //Search helpers
 function DisplayResults(event){
    let matchingPlaylists = FindAllPlaylists(event.target.value);
@@ -314,18 +338,6 @@ function Sort(event){
          ReloadPlaylists();
          break;
    }
-}
-
-function SortByName(){
-   RenderPassedPlaylists(playlistData.sort((a, b) => a.playlist_name.localeCompare(b.playlist_name)));
-}
-
-function SortByLikes() {
-   RenderPassedPlaylists(playlistData.sort((a, b) => b.playlist_likes - a.playlist_likes));
-}
-
-function SortByDates() {
-   RenderPassedPlaylists(playlistData.sort((a, b) => b.playlist_dateadded - a.playlist_dateadded));
 }
 
 //event handlers for add playlist modal
