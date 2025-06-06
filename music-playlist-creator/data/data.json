@@ -9,6 +9,7 @@
       "playlist_dateadded": 1698427200,
       "songs": [
         {
+          "song_id": 1,
           "title": "Die With a Smile",
           "author": "Lady Gaga & Bruno Mars",
           "album": "Die With a Smile",
@@ -16,6 +17,7 @@
           "art": "assets/img/pic9.jpg"
         },
         {
+          "song_id": 2,
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
@@ -23,6 +25,7 @@
           "art": "assets/img/pic10.jpg"
         },
         {
+          "song_id": 3,
           "title": "Ordinary",
           "author": "Alex Warren",
           "album": "Ordinary",
@@ -30,6 +33,7 @@
           "art": "assets/img/pic11.jpg"
         },
         {
+          "song_id": 4,
           "title": "4x4",
           "author": "Travis Scott",
           "album": "Utopia",
@@ -37,6 +41,7 @@
           "art": "assets/img/pic12.jpg"
         },
         {
+          "song_id": 5,
           "title": "Pink Pony Club",
           "author": "Chappell Roan",
           "album": "Pink Pony Club",
@@ -44,6 +49,7 @@
           "art": "assets/img/pic13.jpg"
         },
         {
+          "song_id": 6,
           "title": "The Giver",
           "author": "Chappell Roan",
           "album": "The Giver",
@@ -61,6 +67,7 @@
       "playlist_dateadded": 1682006400,
       "songs": [
         {
+          "song_id": 1,
           "title": "4x4",
           "author": "Travis Scott",
           "album": "Utopia",
@@ -68,6 +75,7 @@
           "art": "assets/img/pic12.jpg"
         },
         {
+          "song_id": 2,
           "title": "Pink Pony Club",
           "author": "Chappell Roan",
           "album": "Pink Pony Club",
@@ -75,6 +83,7 @@
           "art": "assets/img/pic13.jpg"
         },
         {
+          "song_id": 3,
           "title": "The Giver",
           "author": "Chappell Roan",
           "album": "The Giver",
@@ -92,6 +101,7 @@
       "playlist_dateadded": 1669852800,
       "songs": [
         {
+          "song_id": 1,
           "title": "Just in Case",
           "author": "Morgan Wallen",
           "album": "One Thing at a Time",
@@ -99,6 +109,7 @@
           "art": "assets/img/pic12.jpg"
         },
         {
+          "song_id": 2,
           "title": "Die With a Smile",
           "author": "Lady Gaga & Bruno Mars",
           "album": "Die With a Smile",
@@ -106,6 +117,7 @@
           "art": "assets/img/pic9.jpg"
         },
         {
+          "song_id": 3,
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
@@ -123,6 +135,7 @@
       "playlist_dateadded": 1675305600,
       "songs": [
         {
+          "song_id": 1,
           "title": "Pink Pony Club",
           "author": "Chappell Roan",
           "album": "Pink Pony Club",
@@ -130,6 +143,7 @@
           "art": "assets/img/pic13.jpg"
         },
         {
+          "song_id": 2,
           "title": "The Giver",
           "author": "Chappell Roan",
           "album": "The Giver",
@@ -137,6 +151,7 @@
           "art": "assets/img/pic14.jpg"
         },
         {
+          "song_id": 3,
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
@@ -154,6 +169,7 @@
       "playlist_dateadded": 1659312000,
       "songs": [
         {
+          "song_id": 1,
           "title": "Ordinary",
           "author": "Alex Warren",
           "album": "Ordinary",
@@ -161,6 +177,7 @@
           "art": "assets/img/pic11.jpg"
         },
         {
+          "song_id": 2,
           "title": "I'm the Problem",
           "author": "Morgan Wallen",
           "album": "One Thing at a Time",
@@ -168,6 +185,7 @@
           "art": "assets/img/pic12.jpg"
         },
         {
+          "song_id": 3,
           "title": "Just in Case",
           "author": "Morgan Wallen",
           "album": "One Thing at a Time",
@@ -185,6 +203,7 @@
       "playlist_dateadded": 1672531200,
       "songs": [
         {
+          "song_id": 1,
           "title": "4x4",
           "author": "Travis Scott",
           "album": "Utopia",
@@ -192,6 +211,7 @@
           "art": "assets/img/pic12.jpg"
         },
         {
+          "song_id": 2,
           "title": "Pink Pony Club",
           "author": "Chappell Roan",
           "album": "Pink Pony Club",
@@ -199,6 +219,7 @@
           "art": "assets/img/pic13.jpg"
         },
         {
+          "song_id": 3,
           "title": "The Giver",
           "author": "Chappell Roan",
           "album": "The Giver",
@@ -208,7 +229,7 @@
       ]
     },
     {
-       "playlistID": 6,
+      "playlistID": 6,
       "playlist_name": "Late Night Drive",
       "playlist_author": "Gabe",
       "playlist_art": "assets/img/pic6.jpg",
@@ -216,6 +237,7 @@
       "playlist_dateadded": 1685721600,
       "songs": [
         {
+          "song_id": 1,
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
@@ -223,6 +245,7 @@
           "art": "assets/img/pic10.jpg"
         },
         {
+          "song_id": 2,
           "title": "Ordinary",
           "author": "Alex Warren",
           "album": "Ordinary",
@@ -230,6 +253,7 @@
           "art": "assets/img/pic11.jpg"
         },
         {
+          "song_id": 3,
           "title": "I'm the Problem",
           "author": "Morgan Wallen",
           "album": "One Thing at a Time",
@@ -247,6 +271,7 @@
       "playlist_dateadded": 1691030400,
       "songs": [
         {
+          "song_id": 1,
           "title": "Die With a Smile",
           "author": "Lady Gaga & Bruno Mars",
           "album": "Die With a Smile",
@@ -254,6 +279,7 @@
           "art": "assets/img/pic9.jpg"
         },
         {
+          "song_id": 2,
           "title": "Anxiety",
           "author": "Doechii",
           "album": "Alligator Bites Never Heal",
@@ -261,6 +287,7 @@
           "art": "assets/img/pic10.jpg"
         },
         {
+          "song_id": 3,
           "title": "Ordinary",
           "author": "Alex Warren",
           "album": "Ordinary",

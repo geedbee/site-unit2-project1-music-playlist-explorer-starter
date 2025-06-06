@@ -9,7 +9,6 @@ document.getElementById('shuffle-button').addEventListener('click', function(eve
 function ShuffleSongs(event){
    let playlist = playlistData.find(x => x.playlistID == document.getElementById('playlistModal').dataset.currid);
    let shuffledSongs = shuffle(playlist.songs);
-   //TODO: shuffle songs affects the json data
    document.querySelector('.modal-playlist-cards').innerHTML = '';
    for (const x of playlist.songs){
       AddSong(x);
@@ -78,10 +77,13 @@ function openModal(playlist) {
    //check visibility
    document.getElementById('shuffle-button').classList.remove('hidden');
    document.getElementById('addSettings').classList.add('hidden');
-
    //add songs
    for (const x of playlist.songs){
       AddSong(x);
+   }
+   console.log(document.getElementsByClassName('remove-song-btn'));
+   for (x of document.getElementsByClassName('remove-song-btn')) {
+      x.classList.add('hidden');
    }
    modal.style.display = "block";
 }
@@ -100,11 +102,13 @@ function AddSong(x){
    let modalPlaylistCard = document.createElement('div');
    modalPlaylistCard.className = 'modal-playlist-card';
    document.querySelector('.modal-playlist-cards').appendChild(modalPlaylistCard);
+   modalPlaylistCard.dataset.currid = String(x.song_id || '');
    modalPlaylistCard.innerHTML = `
                  <img src="${x.art || 'assets/img/playlist.png'}" alt="song Image" class="modal-playlist-image">
                  <div class="modal-playlist-info">
                      <h3>${x.title}</h3>
                      <p>${x.author}</p>
+                     <button class='remove-song-btn' onclick="HandleRemoveSong(event)">Remove Song</button>
                  </div>
                  <p>${x.duration}</p>`;
 
@@ -121,6 +125,10 @@ window.EditButton = function EditButton(event){
    document.getElementById('playlistModal').style.display = 'block';
    document.getElementById('addSettings').classList.remove('hidden');
    document.getElementById('shuffle-button').classList.add('hidden');
+
+   for (x of document.getElementsByClassName('remove-song-btn')) {
+      x.classList.remove('hidden');
+   }
 
    //add information
    let playlist = GetPlaylistByID(parseInt(targetElement.parentElement.parentElement.dataset.currid));
@@ -153,6 +161,9 @@ document.getElementById('add-btn').addEventListener('click', function(event) {
    document.getElementById('addSettings').classList.remove('hidden');
    document.getElementById('shuffle-button').classList.add('hidden');
 
+   for (x of document.getElementsByClassName('remove-song-btn')) {
+      x.classList.remove('hidden');
+   }
    //make sure id is invalid
    document.getElementById('playlistModal').dataset.currid = "-1";
    //clear existing stuff
@@ -296,7 +307,11 @@ let newSongs = [];
 
 function HandleAddSong(event){
    event.preventDefault(); // Prevent the default form submission behavior
+   let playlistId = event.srcElement.parentElement.parentElement.parentElement.dataset.currid;
+   playlistId = parseInt(playlistId);
+   let index = playlistData.findIndex(x => x.playlistID == playlistId);
    let newSong = {
+      song_id: playlistData[index].songs.length + newSongs.length + 1,
       title: document.getElementById('addSongName').value,
       author: document.getElementById('addSongArtist').value,
       album: document.getElementById('addSongAlbum').value,
@@ -357,3 +372,19 @@ function HandleAddPlaylistCreatorChange(event){
 }
 
 document.querySelector(`h1`).classList.add('ubuntu-regular');
+
+
+function HandleRemoveSong(event){
+   let playlistId = document.getElementById('playlistModal').dataset.currid;
+   let songId = event.srcElement.parentElement.parentElement.dataset.currid;
+   RemoveSong(playlistId, songId);
+   console.log(playlistId);
+   console.log(songId);
+   document.querySelector('.modal-playlist-cards').removeChild(event.srcElement.parentElement.parentElement);
+}
+
+function RemoveSong(playlistId, songId){
+   let index = playlistData.findIndex(x => x.playlistID == playlistId);
+   let songIndex = playlistData[index].songs.findIndex(x => x.song_id == songId);
+   playlistData[index].songs.splice(songIndex, 1);
+}
