@@ -355,3 +355,5 @@ function HandleAddPlaylistNameChange(event){
 function HandleAddPlaylistCreatorChange(event){
    document.getElementById('playlistCreator').textContent = event.target.value;
 }
+
+document.querySelector(`h1`).classList.add('ubuntu-regular');

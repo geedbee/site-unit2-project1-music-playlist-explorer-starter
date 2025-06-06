@@ -23,3 +23,5 @@ function AddFeaturedSong(song){
 }
 
 CreateFeatured();
+
+document.querySelector(`h1`).classList.add('ubuntu-regular');
