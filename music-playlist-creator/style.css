@@ -54,10 +54,34 @@ h1 {
     height: 30px;
 }
 
-.card-container {
-    width: 25%;
-    display: flex;
-    justify-content: center;
+
+@media screen and (min-width: 1200px) {
+    .card-container {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .card-container {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .card-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 479px) {
+    .card-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .like-container {
@@ -119,9 +143,8 @@ h3 {
  }
  .modal-playlist-cards {
     padding: 20px;
- }
- .modal-playlist-card {
-    margin: 20px;
+    height: 500px;
+    overflow-y: scroll;
  }
 
  .close {
@@ -142,10 +165,14 @@ h3 {
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     justify-content: space-between;
+    padding: 20px;
 }
 .modal-playlist-image {
     width: 100px;
     margin-right: 20px;
+}
+.modal-playlist-info h3{
+    font-size: 20px;
 }
 
 #playlistImage {
@@ -166,6 +193,11 @@ h3 {
 #featured-playlist-image {
     width: 500px;
     border-radius: 30px;
+}
+
+#featured-playlist-name {
+    font-size: 30px;
+    font-weight: 100;
 }
 
 #featured-playlist{
@@ -222,4 +254,9 @@ h3 {
     height: 50px;
     border-radius: 50%;
     background-color: transparent;
+}
+
+#shuffle-button {
+    width: 50px;
+    height: 30px;
 }

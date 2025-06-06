@@ -6,15 +6,13 @@
 
     <title>Music Playlist Explorer</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-
+    <script src="https://kit.fontawesome.com/3362066cee.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <!-- Your header content here -->
          <h1>Music Playlist Explorer</h1>
-         <i class="fa-solid fa-heart"></i>
          <div id="search-bar">
             <form>
                <input type="text" id="search" placeholder="Search for a playlist..." onkeyup="DisplayResults(event)">
@@ -27,6 +25,7 @@
                 <option value="none">Sort By</option>
                 <option value="name">Playlist Name (A-Z)</option>
                 <option value="likes">Likes (descending)</option>
+                <option value="dates">Dates (recent first)</option>
              </select>
          </div>
          <ul id="nav-bar-list">
@@ -36,8 +35,8 @@
     </header>
     <div id="playlistModal" data-currid="none" class="modal">
         <div class="modal-content">
-            <button id="shuffle-button">Shuffle</button>
             <div class="modal-playlist-header">
+                <button id="shuffle-button"><i class="fa-solid fa-shuffle"></i></button>
                 <span class="close">&times;</span>
                 <h1 id="playlistName">Playlist Title</h1>
             </div>

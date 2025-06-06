@@ -32,7 +32,6 @@ function GetPlaylistByID(id){
 }
 //Deletes a playlist from the playlistData array
 function Delete(playlistID){
-   console.log("deleting playlist" + playlistID);
    let index = playlistData.findIndex(x => x.playlistID == playlistID);
    playlistData.splice(index, 1);
    ReloadPlaylists();
@@ -60,7 +59,6 @@ function openModal(playlist) {
    //header
    document.getElementById('playlistModal').dataset.currid = String(playlist.playlistID || '');
    document.getElementById('playlistName').textContent = playlist.playlist_name;
-   console.log(document.getElementById('playlistCreator'));
    document.getElementById('playlistCreator').textContent = playlist.playlist_author;
    document.getElementById('playlistImage').src = playlist.playlist_art || 'assets/img/playlist.png';
 
@@ -115,6 +113,7 @@ window.EditButton = function EditButton(event){
 
    //header
    document.getElementById('playlistModal').dataset.currid = String(playlist.playlistID || '');
+   console.log(document.getElementById('playlistModal').dataset.currid);
    document.getElementById('playlistName').textContent = playlist.playlist_name;
    document.getElementById('playlistCreator').textContent = playlist.playlist_author;
    document.getElementById('playlistImage').src = playlist.playlist_art || 'assets/img/playlist.png';
@@ -126,6 +125,7 @@ window.EditButton = function EditButton(event){
    for (const x of playlist.songs){
       AddSong(x);
    }
+   newSongs = [];
 }
 
 //Add +  button handling
@@ -161,13 +161,13 @@ function ToggleLikes(event){
    if (event.srcElement.dataset.hasliked === "false"){
       let likes = parseInt(event.srcElement.dataset.likes) + 1;
       event.srcElement.dataset.likes = likes;
-      event.srcElement.innerHTML = `&#x2665 ${likes}`;
+      event.srcElement.innerHTML = `<i class="fa-solid fa-heart"></i> ${likes}`;
       event.srcElement.dataset.hasliked = "true";
    }
    else {
       let likes = parseInt(event.srcElement.dataset.likes) - 1;
       event.srcElement.dataset.likes = likes;
-      event.srcElement.innerHTML = `&#x2661 ${likes}`;
+      event.srcElement.innerHTML = `<i class="fa-regular fa-heart"></i> ${likes}`;
       event.srcElement.dataset.hasliked = "false";
    }
 }
@@ -192,13 +192,13 @@ function AddPlaylist(x){
    playlist.appendChild(card);
    card.innerHTML = `
    <div class="edit-del-container">
-      <button id="edit-btn" onclick="EditButton(event)">Edit</button>
-      <button id="del-btn" onclick="DeleteButton(event)">Delete</button>
+      <button id="edit-btn" onclick="EditButton(event)"><i class="fa-solid fa-pen"></i></button>
+      <button id="del-btn" onclick="DeleteButton(event)"><i class="fa-solid fa-trash"></i></button>
    </div>
    <img src="${x.playlist_art || 'assets/img/playlist.png'}" alt="Playlist Image" class="playlist-image">
     <h2>${x.playlist_name}</h2>
     <h3>${x.playlist_author}</h3>
-    <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasLiked=${false} onclick="ToggleLikes(event)">&#x2661 ${x.playlist_likes || 0}</button>`;
+    <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasliked=${false} onclick="ToggleLikes(event)"><i class="fa-regular fa-heart"></i> ${x.playlist_likes || 0}</button>`;
 }
 
 RenderPlaylists();
@@ -207,7 +207,6 @@ RenderPlaylists();
 
 //adding event listeners to the add playlist form
 document.addEventListener("DOMContentLoaded", function(event) {
-   console.log("DOM fully loaded and parsed");
    document.getElementById("addPlaylistForm").addEventListener("submit", function(event) {
       HandleAddPlaylist(event);
    });
@@ -224,9 +223,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function HandleSave(event){
    //save will handle both an edit and a new playlist
    let id = parseInt(document.getElementById('playlistModal').dataset.currid);
-   console.log(id);
    if (id !== -1){
-      console.log("editing playlist");
       let playlist = GetPlaylistByID(id);
       let playlistName = document.getElementById('addPlaylistName').value;
       let creatorName = document.getElementById('addPlaylistCreator').value;
@@ -237,13 +234,13 @@ function HandleSave(event){
       ReloadPlaylists();
    }
    else{
-      console.log("new playlist");
       let newPlaylist = {
          playlistID: playlistData.length,
          playlist_name: document.getElementById('addPlaylistName').value || 'New Playlist',
          playlist_author: document.getElementById('addPlaylistCreator').value || 'me',
          playlist_art: '',
          playlist_likes: 0,
+         playlist_dateadded: Date.now(),
          songs: newSongs};
       playlistData.push(newPlaylist);
       AddPlaylist(newPlaylist);
@@ -280,7 +277,6 @@ function HandleAddSong(event){
 
 //Search helpers
 function DisplayResults(event){
-   console.log(event.target.value);
    let matchingPlaylists = FindAllPlaylists(event.target.value);
    RenderPassedPlaylists(matchingPlaylists);
 }
@@ -303,13 +299,15 @@ function Clear(event){
 
 //Sorting
 function Sort(event){
-   console.log(event.target.value);
    switch (event.target.value){
       case 'name':
          SortByName();
          break;
       case 'likes':
          SortByLikes();
+         break;
+      case 'dates':
+         SortByDates();
          break;
       case 'none':
          ReloadPlaylists();
@@ -323,6 +321,10 @@ function SortByName(){
 
 function SortByLikes() {
    RenderPassedPlaylists(playlistData.sort((a, b) => b.playlist_likes - a.playlist_likes));
+}
+
+function SortByDates() {
+   RenderPassedPlaylists(playlistData.sort((a, b) => b.playlist_dateadded - a.playlist_dateadded));
 }
 
 //event handlers for add playlist modal
