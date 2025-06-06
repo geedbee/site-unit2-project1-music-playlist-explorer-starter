@@ -49,10 +49,9 @@
             <div id="addSettings">
                 <form id="addPlaylistForm">
                     <label for="addPlaylistName">Playlist Name:</label>
-                    <input id="addPlaylistName" type="text" name="playlistName" required>
+                    <input id="addPlaylistName" type="text" name="playlistName" required oninput="HandleAddPlaylistNameChange(event)">
                     <label for="addPlaylistCreator">Playlist Creator:</label>
-                    <input type="text" id="addPlaylistCreator" name="playlistCreator" required>
-                    <input type="submit" value="Submit">
+                    <input type="text" id="addPlaylistCreator" name="playlistCreator" required oninput="HandleAddPlaylistCreatorChange(event)">
                 </form>
                 <form id="addSongForm">
                     <label for="addSongName">Song Name:</label>
@@ -63,9 +62,9 @@
                     <input type="text" id="addSongAlbum" name="songAlbum" required>
                     <label for="addSongDuration">Song Duration:</label>
                     <input type="text" id="addSongDuration" name="songDuration" required>
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Add">
                 </form>
-                <button id="save-btn">Save</button>
+                <button id="save-btn">Save Playlist</button>
             </div>
         </div>
 

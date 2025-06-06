@@ -36,12 +36,14 @@ function Delete(playlistID){
    playlistData.splice(index, 1);
    ReloadPlaylists();
 }
+//reloads playlist based on playlistData array
 function ReloadPlaylists(){
    document.getElementById('playlist-cards').innerHTML = '';
    for (const x of playlistData){
       AddPlaylist(x);
    }
 }
+//renders ONLY the playlists in the argument
 function RenderPassedPlaylists(playlists){
    document.getElementById('playlist-cards').innerHTML = '';
    for (const x of playlists){
@@ -97,12 +99,10 @@ function AddSong(x){
 
 //Edit button handling
 window.EditButton = function EditButton(event){
-   console.log(event.srcElement.parentElement.dataset.currid);
    event.stopPropagation();
    //open modal
    document.getElementById('playlistModal').style.display = 'block';
    document.getElementById('addSettings').classList.remove('hidden');
-   //hide shuffle button
    document.getElementById('shuffle-button').classList.add('hidden');
 
    //add information
@@ -116,13 +116,36 @@ window.EditButton = function EditButton(event){
    document.getElementById('playlistName').textContent = playlist.playlist_name;
    document.querySelector('.modal-playlist-header h2').textContent = playlist.playlist_author;
    document.getElementById('playlistImage').src = playlist.playlist_art || 'assets/img/playlist.png';
+   document.getElementById('addPlaylistName').value = playlist.playlist_name;
+   document.getElementById('addPlaylistCreator').value = playlist.playlist_author;
+   document.getElementById('addSongForm').reset();
 
    //add songs
    for (const x of playlist.songs){
       AddSong(x);
    }
-   modal.style.display = "block";
 }
+
+//Add +  button handling
+document.getElementById('add-btn').addEventListener('click', function(event) {
+   //open modal
+   document.getElementById('playlistModal').style.display = 'block';
+   document.getElementById('addSettings').classList.remove('hidden');
+   document.getElementById('shuffle-button').classList.add('hidden');
+
+   //make sure id is invalid
+   document.getElementById('playlistModal').dataset.currid = "-1";
+   //clear existing stuff
+   document.getElementById('playlistName').textContent = 'New Playlist';
+   document.getElementById('playlistCreator').textContent = 'me';
+   document.getElementById('playlistImage').src = 'assets/img/playlist.png';
+   document.querySelector('.modal-playlist-cards').innerHTML = '';
+   document.getElementById('addPlaylistName').value = 'New Playlist';
+   document.getElementById('addPlaylistCreator').value = 'me';
+   document.getElementById('addSongForm').reset();
+
+   newSongs = [];
+});
 
 //Delete button handling
 window.DeleteButton = function DeleteButton(event){
@@ -172,30 +195,11 @@ function AddPlaylist(x){
     <h2>${x.playlist_name}</h2>
     <h3>${x.playlist_author}</h3>
     <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasLiked=${false} onclick="ToggleLikes(event)">&#x2661 ${x.playlist_likes || 0}</button>`;
-   document.getElementById('edit-btn').addEventListener('click', function(event) {
-      openModal(x);
-      console.log("apple");
-   });
 }
 
 RenderPlaylists();
 
-//Add +  button handling
-document.getElementById('add-btn').addEventListener('click', function(event) {
-   //open modal
-   document.getElementById('playlistModal').style.display = 'block';
-   document.getElementById('addSettings').classList.remove('hidden');
-   //hide shuffle button
-   document.getElementById('shuffle-button').classList.add('hidden');
 
-   //clear existing stuff
-   document.getElementById('playlistName').textContent = 'New Playlist';
-   document.getElementById('playlistCreator').textContent = 'me';
-   document.getElementById('playlistImage').src = 'assets/img/playlist.png';
-   document.querySelector('.modal-playlist-cards').innerHTML = '';
-
-   newSongs = [];
-});
 
 //adding event listeners to the add playlist form
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -217,7 +221,7 @@ function HandleSave(event){
    //save will handle both an edit and a new playlist
    let id = parseInt(document.getElementById('playlistModal').dataset.currid);
    console.log(id);
-   if (id !== undefined){
+   if (id !== -1){
       console.log("editing playlist");
       let playlist = GetPlaylistByID(id);
       let playlistName = document.getElementById('addPlaylistName').value;
@@ -225,21 +229,22 @@ function HandleSave(event){
       let index = playlistData.findIndex(x => x.playlistID == id);
       playlistData[index].playlist_name = playlistName;
       playlistData[index].playlist_author = creatorName;
+      playlistData[index].songs = [...playlistData[index].songs, ...newSongs];
       ReloadPlaylists();
    }
    else{
       console.log("new playlist");
       let newPlaylist = {
          playlistID: playlistData.length,
-         playlist_name: document.getElementById('addPlaylistName').value || 'New Playlist',
-         playlist_author: document.getElementById('addPlaylistCreator').value || 'me',
+         playlist_name: document.getElementById('addPlaylistName').textContent || 'New Playlist',
+         playlist_author: document.getElementById('addPlaylistCreator').textContent || 'me',
          playlist_art: '',
          playlist_likes: 0,
          songs: newSongs};
       playlistData.push(newPlaylist);
       AddPlaylist(newPlaylist);
-      modal.style.display = "none";
-      }
+   }
+   modal.style.display = "none";
 }
 
 
@@ -262,15 +267,12 @@ function HandleAddSong(event){
       duration: document.getElementById('addSongDuration').value,
       art: '',
    }
-   AddSong(newsong)
+   AddSong(newSong)
    newSongs.push(newSong);
 }
 
-//TODO: submit and save
-//TODO: clear inputs
-//TODO: use featured for search
-//TODO: bug where first playlist is not editable
 //TODO: add support for likes. add support for dates.
+//TODO: make sure songs can be edited
 
 //Search helpers
 function DisplayResults(event){
@@ -313,4 +315,13 @@ function Sort(event){
 
 function SortByName(){
    RenderPassedPlaylists(playlistData.sort((a, b) => a.playlist_name.localeCompare(b.playlist_name)));
+}
+
+//event handlers for add playlist modal
+function HandleAddPlaylistNameChange(event){
+   document.getElementById('playlistName').textContent = event.target.value;
+}
+
+function HandleAddPlaylistCreatorChange(event){
+   document.getElementById('playlistCreator').textContent = event.target.value;
 }
