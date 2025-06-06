@@ -113,7 +113,7 @@ function AddSong(x){
 //Edit button handling
 window.EditButton = function EditButton(event){
    let targetElement = event.srcElement;
-   if (!event.srcElement.id !== 'edit-btn'){
+   if (event.srcElement.id !== 'edit-btn'){
       targetElement = event.srcElement.parentElement;
    }
    event.stopPropagation();
@@ -170,7 +170,8 @@ document.getElementById('add-btn').addEventListener('click', function(event) {
 //Delete button handling
 window.DeleteButton = function DeleteButton(event){
    event.stopPropagation();
-   if (!event.srcElement.id !== 'del-btn'){
+   let targetElement = event.srcElement;
+   if (event.srcElement.id !== 'del-btn'){
       targetElement = event.srcElement.parentElement;
    }
    Delete(targetElement.parentElement.parentElement.dataset.currid);
