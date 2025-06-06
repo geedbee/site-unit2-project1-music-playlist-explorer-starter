@@ -190,12 +190,18 @@ function ToggleLikes(event){
       targetElement.dataset.likes = likes;
       targetElement.innerHTML = `<i class="fa-solid fa-heart"></i> ${likes}`;
       targetElement.dataset.hasliked = "true";
+      let playlist = GetPlaylistByID(parseInt(targetElement.dataset.id));
+      let index = playlistData.findIndex(x => x.playlistID == playlist.playlistID);
+      playlistData[index].playlist_likes = likes;
    }
    else {
       let likes = parseInt(targetElement.dataset.likes) - 1;
       targetElement.dataset.likes = likes;
       targetElement.innerHTML = `<i class="fa-regular fa-heart"></i> ${likes}`;
       targetElement.dataset.hasliked = "false";
+      let playlist = GetPlaylistByID(parseInt(targetElement.dataset.id));
+      let index = playlistData.findIndex(x => x.playlistID == playlist.playlistID);
+      playlistData[index].playlist_likes = likes;
    }
 }
 
@@ -225,7 +231,7 @@ function AddPlaylist(x){
    <img src="${x.playlist_art || 'assets/img/playlist.png'}" alt="Playlist Image" class="playlist-image">
     <h2>${x.playlist_name}</h2>
     <h3>${x.playlist_author}</h3>
-    <button class="like-button" data-likes=${x.playlist_likes || 0} data-hasliked=${false} onclick="ToggleLikes(event)">
+    <button class="like-button" data-id=${x.playlistID} data-likes=${x.playlist_likes || 0} data-hasliked=${false} onclick="ToggleLikes(event)">
       <i class="fa-regular fa-heart"></i> ${x.playlist_likes || 0}
     </button>`;
 }

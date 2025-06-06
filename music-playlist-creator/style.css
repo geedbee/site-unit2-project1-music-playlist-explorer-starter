@@ -1,3 +1,9 @@
+:root {
+    --color1: #ccff66;
+    --color2: #f1e8b8;
+}
+
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -9,7 +15,7 @@ grid-template-rows: auto 1fr auto;
 }
 
 header {
-    background-color: lightgray;
+    background-color: var(--color1);
     min-height: 50px;
     border-bottom: black 1px solid;
     display: flex;
@@ -26,7 +32,7 @@ header {
 }
 
 footer {
-    background-color: lightgray;
+    background-color: var(--color2);
     border-top: black 1px solid;
     min-height: 50px;
 }
@@ -48,6 +54,7 @@ h1 a{
 .playlist-image {
     width: 95%;
     height: 95%;
+    border-radius: 5px;
 }
 
 .like-image {
@@ -103,8 +110,8 @@ h1 a{
 }
 
 .card:hover {
-    border: 2px solid blue;
-    box-shadow: 5px 5px 5px gray;
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px #2ec4b6;
 }
 
 h2 {
@@ -171,6 +178,9 @@ h3 {
 .modal-playlist-image {
     width: 100px;
     margin-right: 20px;
+    padding:5px;
+    border-radius: 10px;
+    background-color: var(--color1);
 }
 .modal-playlist-info h3{
     font-size: 20px;
@@ -178,9 +188,13 @@ h3 {
 
 #playlistImage {
     width: 500px;
+    border-radius: 10px;
 }
 .modal-playlist-header h2{
     margin: 5px;
+}
+.modal-top {
+    background-color: var(--color1);
 }
 
 
@@ -258,10 +272,23 @@ h3 {
 }
 
 #add-btn:hover {
-    background-color: lightgray;
+    background-color: var(--color1);
 }
 
 #shuffle-button {
     width: 50px;
     height: 30px;
+    background-color: var(--color1);
+}
+
+.fa-heart {
+    color: #ff6666;
+}
+
+#del-btn:hover {
+    background-color: var(--color1);
+}
+
+#edit-btn:hover {
+    background-color: var(--color1);
 }
