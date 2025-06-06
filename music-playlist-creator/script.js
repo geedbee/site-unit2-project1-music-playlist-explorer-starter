@@ -310,13 +310,27 @@ function HandleAddSong(event){
    let playlistId = event.srcElement.parentElement.parentElement.parentElement.dataset.currid;
    playlistId = parseInt(playlistId);
    let index = playlistData.findIndex(x => x.playlistID == playlistId);
-   let newSong = {
-      song_id: playlistData[index].songs.length + newSongs.length + 1,
-      title: document.getElementById('addSongName').value,
-      author: document.getElementById('addSongArtist').value,
-      album: document.getElementById('addSongAlbum').value,
-      duration: document.getElementById('addSongDuration').value,
-      art: '',
+   console.log(index);
+   let newSong;
+   if (index === -1){
+      newSong = {
+         song_id: newSongs.length + 1,
+         title: document.getElementById('addSongName').value,
+         author: document.getElementById('addSongArtist').value,
+         album: document.getElementById('addSongAlbum').value,
+         duration: document.getElementById('addSongDuration').value,
+         art: '',
+      }
+   }
+   else{
+      newSong = {
+         song_id: playlistData[index].songs.length + newSongs.length + 1,
+         title: document.getElementById('addSongName').value,
+         author: document.getElementById('addSongArtist').value,
+         album: document.getElementById('addSongAlbum').value,
+         duration: document.getElementById('addSongDuration').value,
+         art: '',
+      }
    }
    AddSong(newSong)
    newSongs.push(newSong);
@@ -384,6 +398,11 @@ function HandleRemoveSong(event){
 }
 
 function RemoveSong(playlistId, songId){
+   if (playlistId == -1){
+      let index = newSongs.findIndex(x => x.song_id == songId);
+      newSongs.splice(index, 1);
+      return;
+   }
    let index = playlistData.findIndex(x => x.playlistID == playlistId);
    let songIndex = playlistData[index].songs.findIndex(x => x.song_id == songId);
    playlistData[index].songs.splice(songIndex, 1);
