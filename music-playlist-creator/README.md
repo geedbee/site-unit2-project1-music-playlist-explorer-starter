@@ -133,8 +133,7 @@ Deployed Application (**required**): https://music-playlist-explorer-k45u.onrend
 ### Walkthrough Video
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+https://www.loom.com/share/945e7d1dc3ca49be978b388346dff91b?sid=c315f3f2-192d-4147-b61b-8099c894acd9
 
 ### Reflection
 
