@@ -13,6 +13,9 @@ function ShuffleSongs(event){
    for (const x of playlist.songs){
       AddSong(x);
    }
+   for (x of document.getElementsByClassName('remove-song-btn')) {
+      x.classList.add('hidden');
+   }
 }
 function shuffle(array) {
    for (let i = array.length - 1; i > 0; i--) {
